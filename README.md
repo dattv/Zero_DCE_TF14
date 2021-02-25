@@ -68,3 +68,8 @@ To train the model run ```CUDA_VISIBLE_DEVICES=0 python3 train.py```
 1. Training log and tensorboard log are stored in ``./logs``
 
 2. weight h5 and *.ckpt are stored in ```./outputs```
+
+## Result
+
+### model architecture
+[]{https://github.com/dattv/Zero_DCE_TF14/blob/main/nets/model.png}
