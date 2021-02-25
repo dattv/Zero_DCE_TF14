@@ -139,7 +139,7 @@ if __name__ == '__main__':
     input_np = np.random.randint(low=0, high=10, size=[1, 256, 256, 3]).astype(np.float32)
     output = model(input_np)
     print(model.summary())
-    model.save('abc.h5')
+    # model.save('abc.h5')
 
     # loaded_model = tf.keras.models.load_model("abc.h5")
 
