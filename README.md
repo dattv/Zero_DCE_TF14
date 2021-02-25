@@ -1,7 +1,7 @@
 # Zero DCE
 From the [published paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Guo_Zero-Reference_Deep_Curve_Estimation_for_Low-Light_Image_Enhancement_CVPR_2020_paper.pdf) and [Li-Chongyi - author repository](https://github.com/Li-Chongyi/Zero-DCE), [Tuvovan implemented](https://github.com/tuvovan/Zero_DCE_TF), I tried to learn and re-implement Zero-DCE.
 
-<b>I use keras library from tensorflow 1.14 to develop this model </b>  
+<b>I use Keras library from tensorflow 1.14 to develop this model </b>  
 
 (:point_right:<b>This project is under development</b>:point_left:)
 
