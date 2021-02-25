@@ -3,7 +3,6 @@ From the [published paper](https://openaccess.thecvf.com/content_CVPR_2020/paper
 
 <b>I use Keras library from tensorflow 1.14 to develop this model </b>  
 
-(:point_right:<b>This project is under development</b>:point_left:)
 
 # Requirements
 
