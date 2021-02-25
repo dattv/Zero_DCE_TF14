@@ -72,4 +72,4 @@ To train the model run ```CUDA_VISIBLE_DEVICES=0 python3 train.py```
 ## Result
 
 ### model architecture
-[]{https://github.com/dattv/Zero_DCE_TF14/blob/main/nets/model.png}
+![Zero-DCE](https://github.com/dattv/Zero_DCE_TF14/blob/main/nets/model.png)
