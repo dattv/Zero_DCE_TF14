@@ -41,7 +41,7 @@ There are some Flag from file ```create_tfrecord.py``` need to be consideration:
 
 3. run ```python3 create_tfrecord.py```
 
-## Train
+## Train 
 
 Need to check the config file in ```./config.yaml```.
 
