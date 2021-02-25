@@ -19,11 +19,11 @@ from dataset_utils import int64_feature
 from dataset_utils import ImageCoder
 
 tf.app.flags.DEFINE_string('train_directory',
-                           '/media/dat/68fa98f8-9d03-4c1e-9bdb-c71ea72ab6fa/dat/zero_DCE/data/train_data',
+                           './data/train_data',
                            'Training data directory')
 tf.app.flags.DEFINE_string('validation_directory', '/tmp/',
                            'Validation data directory')
-tf.app.flags.DEFINE_string('output_directory', '/media/dat/68fa98f8-9d03-4c1e-9bdb-c71ea72ab6fa/dat/zero_DCE/data/tfrecord',
+tf.app.flags.DEFINE_string('output_directory', './data/tfrecord',
                            'Output data directory')
 
 tf.app.flags.DEFINE_integer('train_shards', 24,
