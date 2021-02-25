@@ -3,7 +3,7 @@ From the [published paper](https://openaccess.thecvf.com/content_CVPR_2020/paper
 
 (:point_right:<b>This project is under development</b>:point_left:)
 
-# Setup
+# Requirements
 
 :+1: ```Ubuntu 18.04```
 
