@@ -43,7 +43,8 @@ There are some Flag from file ```create_tfrecord.py``` need to be consideration:
 3. run ```python3 create_tfrecord.py```
 
 ## Train 
-<b>Becarefull with the callback function, because I log too much image to tensorboard, so the tensorboard log may very huge, if you do not have large memory hardisk you need to deactive tensorboard callback function.</b>
+<b>Becarefull with the callback function, because I log too many images to tensorboard, so the tensorboard log may very huge, if you do not have large memory hardisk you need to deactive tensorboard callback function.</b>
+
 Need to check the config file in ```./config.yaml```.
 
 ```buildoutcfg
