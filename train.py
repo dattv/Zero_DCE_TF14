@@ -12,7 +12,9 @@ from nets.dce_net import dce_inference, enhance_layer
 from losser import dce_loss
 from input_pipe_line import data_loader
 from data_preprocessing import train_data_preprocess
-from tfboard_callback import conv2d_callback
+from callback_utils import conv2d_callback
+from callback_utils import save_ckpt_callback
+# from callback_utils import tfboard_loss_callback
 import cv2 as cv
 
 
@@ -74,23 +76,12 @@ def train(config=None):
     model.add_loss(custom_loss[1])
     model.add_loss(custom_loss[2])
     model.add_loss(custom_loss[3])
+
     model.compile(optimizer=opt, loss=[None] * len(model.outputs))
 
     checkpoint_h5_cb = tf.keras.callbacks.ModelCheckpoint(
         os.path.join(output_dir, "dce_net.h5"), save_weights_only=True
     )
-
-    class CustomCallback(tf.keras.callbacks.Callback):
-
-        def on_epoch_end(self, epoch, logs=None):
-            """
-            Returns a custom learning rate that decreases as epochs progress.
-            """
-
-            tf.summary.scalar('custom_loss[0]', custom_loss[0])
-            tf.summary.scalar('custom_loss[1]', custom_loss[1])
-            tf.summary.scalar('custom_loss[2]', custom_loss[2])
-            tf.summary.scalar('custom_loss[3]', custom_loss[3])
 
     tfboard_cb = tf.keras.callbacks.TensorBoard(
         log_dir=log_dir, histogram_freq=1, write_graph=True, batch_size=batch_size,
@@ -100,30 +91,19 @@ def train(config=None):
     csvlogger = tf.keras.callbacks.CSVLogger(os.path.join(log_dir, 'train.log'))
     saver = tf.train.Saver()
 
-    class save_ckpt_callback(tf.keras.callbacks.Callback):
-        def __init__(self, saver, session, save_path):
-            super(save_ckpt_callback, self).__init__()
-            self.saver = saver
-            self.session = session
-            self.save_path = save_path
-        def on_epoch_end(self, epoch, logs=None):
-            saver.save(self.session, self.save_path, global_step=epoch)
 
     checkpoint_ckpt_cb = save_ckpt_callback(
-    saver, tf.keras.backend.get_session(), os.path.join(output_dir, model.name + '.ckpt')
+        saver, tf.keras.backend.get_session(), os.path.join(output_dir, model.name + '.ckpt')
     )
 
-    # output_image_cb = TensorBoardImage(tag='test', model)
     test_folder = './data/test_data/LIME'
     list_file = [os.path.join(test_folder, f) for f in os.listdir(test_folder)]
-    img_test = './data/test_data/LIME/1.bmp'
 
     input_display = []
     for file in list_file:
         img = cv.imread(file)
         img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         img = cv.resize(img, (height, width))
-        # img = np.expand_dims(img, axis=0)
         input_display.append([img, img, img])
 
     output_image_cb = conv2d_callback(feed_inputs_display=input_display)
@@ -136,9 +116,7 @@ def train(config=None):
             checkpoint_h5_cb,
             checkpoint_ckpt_cb,
             output_image_cb,
-            # early_stopping_cb,
             tfboard_cb,
-            CustomCallback(),
             csvlogger
         ]
     )

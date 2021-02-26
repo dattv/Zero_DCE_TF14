@@ -12,6 +12,39 @@ from PIL import Image
 import tensorflow as tf
 from nets.dce_net import enhance_np
 data = skimage.data
+#
+# class tfboard_loss_callback(tf.keras.callbacks.Callback):
+#     """
+#
+#     """
+#     def __init__(self, log_dir='./logs/loss/', losser=None, session=None):
+#         super(tfboard_loss_callback, self).__init__()
+#         self.losser = losser
+#         self.session = session
+#         self.writer = tf.summary.FileWriter(log_dir)
+#         self.sumary_loss1 = tf.summary.scalar('loss_1', self.losser[7])
+#         self.sumary_loss2 = tf.summary.scalar('loss_2', self.losser[8])
+#         self.sumary_loss3 = tf.summary.scalar('loss_3', self.losser[9])
+#         self.sumary_loss4 = tf.summary.scalar('loss_4', self.losser[10])
+#
+#
+#     def on_epoch_end(self, epoch, logs=None):
+#         """
+#
+#         :param epoch:
+#         :param logs:
+#         :return:
+#         """
+#         loss1, loss2, loss3, loss4 = self.session.run([self.sumary_loss1,
+#                                                        self.sumary_loss2,
+#                                                        self.sumary_loss3,
+#                                                        self.sumary_loss4])
+#         self.writer.add_summary(loss1, epoch)
+#         self.writer.add_summary(loss2, epoch)
+#         self.writer.add_summary(loss3, epoch)
+#         self.writer.add_summary(loss4, epoch)
+
+
 
 def colormap_jet(img):
     min = img.min()
@@ -25,7 +58,7 @@ def colormap_jet(img):
 
 class conv2d_callback(tf.keras.callbacks.Callback):
     def __init__(self, log_dir='./logs/tmp/', feed_inputs_display=None):
-        super(customModelCheckpoint, self).__init__()
+        super(conv2d_callback, self).__init__()
         self.seen = 0
         self.feed_inputs_display = feed_inputs_display
         self.writer = tf.summary.FileWriter(log_dir)
@@ -96,3 +129,13 @@ class conv2d_callback(tf.keras.callbacks.Callback):
                                 colormap_jet(gray_img))))
 
             self.writer.add_summary(tf.Summary(value=summary_str), global_step=self.seen)
+
+class save_ckpt_callback(tf.keras.callbacks.Callback):
+    def __init__(self, saver, session, save_path):
+        super(save_ckpt_callback, self).__init__()
+        self.saver = saver
+        self.session = session
+        self.save_path = save_path
+
+    def on_epoch_end(self, epoch, logs=None):
+        self.saver.save(self.session, self.save_path, global_step=epoch)
