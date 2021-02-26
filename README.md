@@ -71,7 +71,21 @@ To train the model run ```CUDA_VISIBLE_DEVICES=0 python3 train.py```
 
 ## Result
 
-### model architecture
-
-
+### Model architecture
 ![Zero-DCE](https://github.com/dattv/Zero_DCE_TF14/blob/main/nets/model.png)
+
+### Conversion history
+
+![conversion-history](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/loss_epochs.png)
+
+### Compare between lowlight and enhanced images
+
+![compare0](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare0.png)
+![compare1](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare1.png)
+![compare2](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare2.png)
+![compare3](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare3.png)
+![compare4](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare4.png)
+![compare5](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare5.png)
+![compare6](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare6.png)
+![compare7](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare7.png)
+![compare8](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare8.png)
