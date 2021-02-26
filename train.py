@@ -12,7 +12,7 @@ from nets.dce_net import dce_inference, enhance_layer
 from losser import dce_loss
 from input_pipe_line import data_loader
 from data_preprocessing import train_data_preprocess
-from tfboard_conv2d_learned import customModelCheckpoint
+from tfboard_callback import conv2d_callback
 import cv2 as cv
 
 
@@ -126,7 +126,8 @@ def train(config=None):
         # img = np.expand_dims(img, axis=0)
         input_display.append([img, img, img])
 
-    output_image_cb = customModelCheckpoint(feed_inputs_display=input_display)
+    output_image_cb = conv2d_callback(feed_inputs_display=input_display)
+
     history = model.fit(
         train_data,
         epochs=epochs,

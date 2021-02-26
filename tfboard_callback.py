@@ -23,7 +23,7 @@ def colormap_jet(img):
     return out
 
 
-class customModelCheckpoint(tf.keras.callbacks.Callback):
+class conv2d_callback(tf.keras.callbacks.Callback):
     def __init__(self, log_dir='./logs/tmp/', feed_inputs_display=None):
         super(customModelCheckpoint, self).__init__()
         self.seen = 0
