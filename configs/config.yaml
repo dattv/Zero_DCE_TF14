@@ -12,7 +12,7 @@ SOLVER:
   OPTIMS: sgd
   TRAINING: True
   REGULARIZATION: 0.0001
-  BATCH_SIZE: 48
+  BATCH_SIZE: 4
 DEPLOY:
   FROZEN_FILE: ./outputs/zero_dce.frozen
   TFLITE_FILE: ./outputs/zero_dce.tflite

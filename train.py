@@ -7,17 +7,15 @@ from __future__ import absolute_import
 
 import os
 import yaml
-import sys
-import numpy as np
 import tensorflow as tf
-from tfboard_conv2d_learned import TensorBoardImage
-
 from nets.dce_net import dce_inference, enhance_layer
 from losser import dce_loss
 from input_pipe_line import data_loader
 from data_preprocessing import train_data_preprocess
 from tfboard_conv2d_learned import customModelCheckpoint
 import cv2 as cv
+
+
 def train(config=None):
     """
 
