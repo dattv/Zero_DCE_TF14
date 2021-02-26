@@ -93,3 +93,5 @@ To train the model run ```CUDA_VISIBLE_DEVICES=0 python3 train.py```
 
 # Future development
 1. ADD QAT (quantization aware training) feature for optimize 8bit Uint8
+
+2. Update channel first format
