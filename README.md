@@ -90,3 +90,6 @@ To train the model run ```CUDA_VISIBLE_DEVICES=0 python3 train.py```
 ![compare6](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare6.png)
 ![compare7](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare7.png)
 ![compare8](https://github.com/dattv/Zero_DCE_TF14/blob/main/test_results/compare8.png)
+
+# Future development
+1. ADD QAT (quantization aware training) feature for optimize 8bit Uint8
